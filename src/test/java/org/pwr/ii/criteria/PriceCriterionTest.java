@@ -28,14 +28,4 @@ public class PriceCriterionTest {
         //when, then
         assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556);
     }
-
-    @Test
-    public void should_return_data_presented_in_documentation() {
-        Alcohol piwoPiast = mock(Alcohol.class);
-        when(piwoPiast.getPrice()).thenReturn(2.5);
-
-        Criterion criterion = new PriceCriterion(3, 15, 28);
-
-        assertThat(criterion.calculate(piwoPiast)).isEqualTo(0.984375, Offset.offset(0.000001));
-    }
 }
