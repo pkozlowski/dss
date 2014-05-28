@@ -16,14 +16,18 @@ public class PriceCriterion extends Criterion {
         this.maxValue = maxValue;
     }
 
-    public PriceCriterion(double intervalBegin, double intervalEnd, double maxValue){
+    public PriceCriterion(double intervalBegin, double intervalEnd, double maxValue) {
         this(1.0, intervalBegin, intervalEnd, maxValue);
+    }
+
+    public double calculatePriceFunction(Alcohol alcohol) {
+        if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
+        double result = 1 - Math.pow(((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
+        return result;
     }
 
     @Override
     public double calculate(Alcohol alcohol) {
-        if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
-        double result = 1 - Math.pow(((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
-        return CriteriaUtil.round(result, ACCURACY_LEVEL);
+        return calculatePriceFunction(alcohol) * getFactor();
     }
 }

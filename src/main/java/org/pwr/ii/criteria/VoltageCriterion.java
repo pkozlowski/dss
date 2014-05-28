@@ -16,15 +16,20 @@ public class VoltageCriterion extends Criterion {
         this.intervalEnd = intervalEnd;
         this.maxValue = maxValue;
     }
-    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue){
+
+    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue) {
         this(1.0, intervalBegin, intervalEnd, maxValue);
+    }
+
+    public double calculateVoltageCriteria(Alcohol alcohol) {
+        double subtrahend = Math.pow((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getVoltage()) / maxValue, 2);
+        if (CriteriaUtil.isInRange(alcohol.getVoltage(), intervalBegin, intervalEnd))
+            return 1 - subtrahend * 0.7;
+        return 1 - subtrahend;
     }
 
     @Override
     public double calculate(Alcohol alcohol) {
-        double subtrahend = Math.pow((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getVoltage()) / maxValue, 2);
-        if (CriteriaUtil.isInRange(alcohol.getVoltage(), intervalBegin, intervalEnd))
-            return CriteriaUtil.round(1 - subtrahend * 0.7, ACCURACY_LEVEL);
-        return CriteriaUtil.round(1 - subtrahend, ACCURACY_LEVEL);
+        return calculateVoltageCriteria(alcohol) * getFactor();
     }
 }
