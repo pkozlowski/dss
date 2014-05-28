@@ -5,7 +5,7 @@ package org.pwr.ii.criteria;
  * Date: 2014-05-28.
  */
 public interface Alcohol {
-    default public String getName(){
+    default public String getName() {
         return "unknown";
     }
 
@@ -17,9 +17,10 @@ public interface Alcohol {
         return 0;
     }
 
-    default public String getTypeName(){
+    default public String getTypeName() {
         return "unknown";
     }
+
     public double getSize();
 
 }

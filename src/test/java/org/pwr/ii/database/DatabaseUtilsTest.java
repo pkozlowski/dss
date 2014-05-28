@@ -2,22 +2,33 @@ package org.pwr.ii.database;
 
 import java.util.List;
 
+import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 import org.pwr.ii.database.model.AlcoholDatabase;
 
 public class DatabaseUtilsTest {
+    private final String databasePath = "jdbc:sqlite:src/main/resources/alcohol.sqlite";
+    private final String driver = "org.sqlite.JDBC";
 
+    @Test(expected=ClassNotFoundException.class)
+    public void shouldInitializeDatabase() throws ClassNotFoundException {
+        //given
+        DatabaseUtils util = new DatabaseUtils("some other driver", databasePath);
 
-    @Test
-    // TODO create tests !!!!
-    public void printSomeDatabaseContent() {
-        String databasePath = "jdbc:sqlite:src/main/resources/alcohol.sqlite";
-        String driver = "org.sqlite.JDBC";
-
-        DatabaseUtils util = new DatabaseUtils(driver, databasePath);
-        List<AlcoholDatabase> content = util.readDatabaseToMemory();
-
-        System.out.println(content.get(0));
+        //when, then - expected exception here
+        util.init();
     }
 
+    @Test
+    public void shouldReadDatabaseToMemory() throws ClassNotFoundException {
+        //given
+        DatabaseUtils util = new DatabaseUtils(driver, databasePath);
+
+        //when
+        util.init();
+
+        //then
+        List<AlcoholDatabase> alcoholData = util.readDatabaseToMemory();
+        Assertions.assertThat(alcoholData.size()).isEqualTo(7892);
+    }
 }

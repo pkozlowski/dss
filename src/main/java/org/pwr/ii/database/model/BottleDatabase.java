@@ -6,10 +6,10 @@ public class BottleDatabase {
     private final String bottleName;
     private final int bottleSize;
 
-    public BottleDatabase(DatabaseType type, String bottle_name, int bottle_size) {
+    public BottleDatabase(DatabaseType type, String bottleName, int bottleSize) {
         this.type = type;
-        this.bottleName = bottle_name;
-        this.bottleSize = bottle_size;
+        this.bottleName = bottleName;
+        this.bottleSize = bottleSize;
     }
 
     public String getBottleName() {

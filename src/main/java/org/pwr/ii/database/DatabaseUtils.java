@@ -1,12 +1,6 @@
 package org.pwr.ii.database;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.List;
-
+import com.google.common.collect.Lists;
 import org.pwr.ii.database.model.AlcoholDatabase;
 import org.pwr.ii.database.model.BottleDatabase;
 import org.pwr.ii.database.model.DatabaseType;
@@ -15,20 +9,21 @@ import org.pwr.ii.database.names.PriceColumns;
 import org.pwr.ii.database.names.TableNames;
 import org.pwr.ii.database.names.TypeColumns;
 
-import com.google.common.collect.Lists;
+import java.sql.*;
+import java.util.List;
 
 public class DatabaseUtils {
 
+    private String driver;
     private final String databasePath;
 
     public DatabaseUtils(String driver, String databasePath) {
+        this.driver = driver;
         this.databasePath = databasePath;
-        try {
-            Class.forName(driver);
-        } catch (ClassNotFoundException e) {
-            System.err.println("No driver for JDBC was found");
-            e.printStackTrace();
-        }
+    }
+
+    public void init() throws ClassNotFoundException {
+        Class.forName(driver);
     }
 
     public List<AlcoholDatabase> readDatabaseToMemory() {

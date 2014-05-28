@@ -1,5 +1,6 @@
 package org.pwr.ii.criteria;
 
+import org.fest.assertions.data.Offset;
 import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -27,7 +28,7 @@ public class VoltageCriterionTest {
         Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criterion.calculate(alcohol)).isEqualTo(0.9805556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.9805555, Offset.offset(0.0000001));
     }
 
     @Test
@@ -38,6 +39,6 @@ public class VoltageCriterionTest {
         Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555555, Offset.offset(0.0000001));
     }
 }

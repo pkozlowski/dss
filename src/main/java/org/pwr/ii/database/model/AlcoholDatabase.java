@@ -27,7 +27,7 @@ public class AlcoholDatabase implements Alcohol {
     }
 
     public String getName() {
-        return "unknown";
+        return bottle.getBottleName();
     }
 
     public double getPrice() {
