@@ -1,4 +1,4 @@
-package org.pwr.ii.cryteria;
+package org.pwr.ii.criteria;
 
 /**
  * Author: Piotr Kozłowski

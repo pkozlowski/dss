@@ -1,4 +1,4 @@
-package org.pwr.ii.cryteria;
+package org.pwr.ii.criteria;
 
 import com.google.common.annotations.VisibleForTesting;
 
