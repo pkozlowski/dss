@@ -9,11 +9,15 @@ public class PriceCriterion extends Criterion {
     private double intervalEnd;
     private double intervalBegin;
 
-    public PriceCriterion(double intervalBegin, double intervalEnd, double maxValue, double factor) {
+    public PriceCriterion(double factor, double intervalBegin, double intervalEnd, double maxValue) {
         super(factor);
         this.intervalBegin = intervalBegin;
         this.intervalEnd = intervalEnd;
         this.maxValue = maxValue;
+    }
+
+    public PriceCriterion(double intervalBegin, double intervalEnd, double maxValue){
+        this(1.0, intervalBegin, intervalEnd, maxValue);
     }
 
     @Override

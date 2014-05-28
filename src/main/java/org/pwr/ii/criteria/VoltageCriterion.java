@@ -10,11 +10,14 @@ public class VoltageCriterion extends Criterion {
     private double intervalEnd;
     private double maxValue;
 
-    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue, double factor) {
+    public VoltageCriterion(double factor, double intervalBegin, double intervalEnd, double maxValue) {
         super(factor);
         this.intervalBegin = intervalBegin;
         this.intervalEnd = intervalEnd;
         this.maxValue = maxValue;
+    }
+    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue){
+        this(1.0, intervalBegin, intervalEnd, maxValue);
     }
 
     @Override
