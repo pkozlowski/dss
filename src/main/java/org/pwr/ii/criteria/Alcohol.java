@@ -17,7 +17,7 @@ public interface Alcohol {
         return 0;
     }
 
-    default public String getType(){
+    default public String getTypeName(){
         return "unknown";
     }
     public double getSize();

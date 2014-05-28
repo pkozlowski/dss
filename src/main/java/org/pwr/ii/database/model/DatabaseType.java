@@ -1,16 +1,16 @@
 package org.pwr.ii.database.model;
 
-public class DbType {
+public class DatabaseType {
 
     private final int typeVoltage;
     private final String typeName;
 
-    public DbType(int typeVoltage, String typeName) {
+    public DatabaseType(int typeVoltage, String typeName) {
         this.typeVoltage = typeVoltage;
         this.typeName = typeName;
     }
 
-    public int getTypeVoltage() {
+    public int getVoltage() {
         return typeVoltage;
     }
 
@@ -20,6 +20,6 @@ public class DbType {
 
     @Override
     public String toString() {
-        return "DbType [typeVoltage=" + typeVoltage + ", typeName=" + typeName + "]";
+        return "DatabaseType [typeVoltage=" + typeVoltage + ", typeName=" + typeName + "]";
     }
 }

@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-import org.pwr.ii.database.model.DbBottle;
-import org.pwr.ii.database.model.DbPrice;
-import org.pwr.ii.database.model.DbType;
+import org.pwr.ii.database.model.AlcoholDatabase;
+import org.pwr.ii.database.model.BottleDatabase;
+import org.pwr.ii.database.model.DatabaseType;
 import org.pwr.ii.database.names.BottleColumns;
 import org.pwr.ii.database.names.PriceColumns;
 import org.pwr.ii.database.names.TableNames;
@@ -18,21 +18,22 @@ import org.pwr.ii.database.names.TypeColumns;
 import com.google.common.collect.Lists;
 
 public class DatabaseUtils {
-    public static final String DRIVER = "org.sqlite.JDBC";
-    public static final String DB_URL = "jdbc:sqlite:src/main/resources/alcohol.sqlite";
 
-    public DatabaseUtils() {
+    private final String databasePath;
+
+    public DatabaseUtils(String driver, String databasePath) {
+        this.databasePath = databasePath;
         try {
-            Class.forName(DatabaseUtils.DRIVER);
+            Class.forName(driver);
         } catch (ClassNotFoundException e) {
             System.err.println("No driver for JDBC was found");
             e.printStackTrace();
         }
     }
 
-    public List<DbPrice> readDatabaseToMemory() {
-        List<DbPrice> result = Lists.newArrayList();
-        try (Connection conn = DriverManager.getConnection(DB_URL)) {
+    public List<AlcoholDatabase> readDatabaseToMemory() {
+        List<AlcoholDatabase> result = Lists.newArrayList();
+        try (Connection conn = DriverManager.getConnection(databasePath)) {
             conn.setAutoCommit(false);
             Statement stmt = conn.createStatement();
 
@@ -44,9 +45,9 @@ public class DatabaseUtils {
                             TableNames.TYPES, TypeColumns.TYPE_ID);
             ResultSet rs = stmt.executeQuery(statement);
             while (rs.next()) {
-                DbType type = createType(rs);
-                DbBottle bottle = createBottle(rs, type);
-                DbPrice price = createPrice(rs, bottle);
+                DatabaseType type = createType(rs);
+                BottleDatabase bottle = createBottle(rs, type);
+                AlcoholDatabase price = createPrice(rs, bottle);
                 result.add(price);
             }
         } catch (SQLException e) {
@@ -56,25 +57,25 @@ public class DatabaseUtils {
         return result;
     }
 
-    private DbPrice createPrice(ResultSet rs, DbBottle bottle) throws SQLException {
+    private AlcoholDatabase createPrice(ResultSet rs, BottleDatabase bottle) throws SQLException {
         double priceRetail = rs.getDouble(PriceColumns.PRICE_RETAIL);
         double priceSale = rs.getDouble(PriceColumns.PRICE_SALE);
         int priceDateStart = rs.getInt(PriceColumns.PRICE_DATE_START);
         int priceDateEnd = rs.getInt(PriceColumns.PRICE_DATE_END);
-        return new DbPrice(bottle, priceRetail, priceSale, priceDateStart, priceDateEnd);
+        return new AlcoholDatabase(bottle, priceRetail, priceSale, priceDateStart, priceDateEnd);
     }
 
-    private DbBottle createBottle(ResultSet rs, DbType type) throws SQLException {
+    private BottleDatabase createBottle(ResultSet rs, DatabaseType type) throws SQLException {
         String bottle_name = rs.getString(BottleColumns.BOTTLE_NAME);
         int bottle_size = rs.getInt(BottleColumns.BOTTLE_SIZE);
-        DbBottle bottle = new DbBottle(type, bottle_name, bottle_size);
+        BottleDatabase bottle = new BottleDatabase(type, bottle_name, bottle_size);
         return bottle;
     }
 
-    private DbType createType(ResultSet rs) throws SQLException {
+    private DatabaseType createType(ResultSet rs) throws SQLException {
         int typeVoltage = rs.getInt(TypeColumns.TYPE_VOLTAGE);
         String typeName = rs.getString(TypeColumns.TYPE_NAME);
-        DbType type = new DbType(typeVoltage, typeName);
+        DatabaseType type = new DatabaseType(typeVoltage, typeName);
         return type;
     }
 }

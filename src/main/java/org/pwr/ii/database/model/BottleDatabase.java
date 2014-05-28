@@ -1,12 +1,12 @@
 package org.pwr.ii.database.model;
 
-public class DbBottle {
+public class BottleDatabase {
 
-    private final DbType type;
+    private final DatabaseType type;
     private final String bottleName;
     private final int bottleSize;
 
-    public DbBottle(DbType type, String bottle_name, int bottle_size) {
+    public BottleDatabase(DatabaseType type, String bottle_name, int bottle_size) {
         this.type = type;
         this.bottleName = bottle_name;
         this.bottleSize = bottle_size;
@@ -20,13 +20,21 @@ public class DbBottle {
         return bottleSize;
     }
 
-    public DbType getType() {
+    public DatabaseType getType() {
         return type;
     }
 
     @Override
     public String toString() {
-        return "DbBottle [type=" + type + ", bottleName=" + bottleName + ", bottleSize="
+        return "BottleDatabase [type=" + type + ", bottleName=" + bottleName + ", bottleSize="
                 + bottleSize + "]";
+    }
+
+    public double getVoltage() {
+        return type.getVoltage();
+    }
+
+    public String getTypeName() {
+        return type.getTypeName();
     }
 }
