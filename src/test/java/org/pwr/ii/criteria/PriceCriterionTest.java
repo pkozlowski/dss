@@ -6,15 +6,15 @@ import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class PriceCriteriaTest {
+public class PriceCriterionTest {
     @Test
     public void should_return_one_when_price_is_in_interval() {
         //given
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getPrice()).thenReturn(0.0);
-        Criteria criteria = new PriceCriteria(0, 1, 0);
+        Criterion criterion = new PriceCriterion(0, 1, 0);
 
-        assertThat(criteria.calculate(alcohol)).isEqualTo(1.0);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(1.0);
     }
 
     @Test
@@ -22,9 +22,9 @@ public class PriceCriteriaTest {
         //given
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getPrice()).thenReturn(3.0);
-        Criteria criteria = new PriceCriteria(0, 2, 3);
+        Criterion criterion = new PriceCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criteria.calculate(alcohol)).isEqualTo(0.5555556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556);
     }
 }

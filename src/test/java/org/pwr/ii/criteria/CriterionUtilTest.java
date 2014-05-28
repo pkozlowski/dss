@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 
-public class CriteriaUtilTest {
+public class CriterionUtilTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void should_throw_exception_when_round_places_is_lower_than_0() throws Exception {

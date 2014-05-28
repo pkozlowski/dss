@@ -7,16 +7,16 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 
-public class VoltageCriteriaTest {
+public class VoltageCriterionTest {
     @Test
     public void should_return_1_when_volume_is_in_the_middle(){
         //given
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getVoltage()).thenReturn(1.0);
-        Criteria criteria = new VoltageCriteria(0, 2, 3);
+        Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criteria.calculate(alcohol)).isEqualTo(1.0);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(1.0);
     }
 
     @Test
@@ -24,10 +24,10 @@ public class VoltageCriteriaTest {
         //given
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getVoltage()).thenReturn(1.5);
-        Criteria criteria = new VoltageCriteria(0, 2, 3);
+        Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criteria.calculate(alcohol)).isEqualTo(0.9805556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.9805556);
     }
 
     @Test
@@ -35,9 +35,9 @@ public class VoltageCriteriaTest {
         //given
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getVoltage()).thenReturn(3.0);
-        Criteria criteria = new VoltageCriteria(0, 2, 3);
+        Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criteria.calculate(alcohol)).isEqualTo(0.5555556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556);
     }
 }
