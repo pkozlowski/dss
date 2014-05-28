@@ -5,12 +5,13 @@ package org.pwr.ii.criteria;
  * Date: 2014-05-28.
  */
 
-public class VoltageCriterion implements Criterion {
+public class VoltageCriterion extends Criterion {
     private double intervalBegin;
     private double intervalEnd;
     private double maxValue;
 
-    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue) {
+    public VoltageCriterion(double intervalBegin, double intervalEnd, double maxValue, double factor) {
+        super(factor);
         this.intervalBegin = intervalBegin;
         this.intervalEnd = intervalEnd;
         this.maxValue = maxValue;
