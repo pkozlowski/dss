@@ -19,8 +19,8 @@ public class CriteriaUtil {
         return bigDecimal.doubleValue();
     }
 
-    public static double getMiddle(double intervalBegin, double intervalEnd) {
-        return (intervalEnd - intervalBegin) / 2;
+    public static double countMiddle(double intervalBegin, double intervalEnd) {
+        return (intervalEnd + intervalBegin) / 2;
     }
 
     public static boolean isInRange(double value, double intervalBegin, double intervalEnd) {

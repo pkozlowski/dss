@@ -26,6 +26,6 @@ public class PriceCriterionTest {
         Criterion criterion = new PriceCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556);
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555555, Offset.offset(0.000001));
     }
 }

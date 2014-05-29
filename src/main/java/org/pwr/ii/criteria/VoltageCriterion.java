@@ -22,7 +22,7 @@ public class VoltageCriterion extends Criterion {
     }
 
     public double calculateVoltageCriteria(Alcohol alcohol) {
-        double subtrahend = Math.pow((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getVoltage()) / maxValue, 2);
+        double subtrahend = Math.pow((CriteriaUtil.countMiddle(intervalBegin, intervalEnd) - alcohol.getVoltage()) / maxValue, 2);
         if (CriteriaUtil.isInRange(alcohol.getVoltage(), intervalBegin, intervalEnd))
             return 1 - subtrahend * 0.7;
         return 1 - subtrahend;
