@@ -5,7 +5,6 @@ import java.util.List;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 import org.pwr.ii.criteria.Alcohol;
-import org.pwr.ii.database.model.AlcoholDatabase;
 
 public class DatabaseUtilsTest {
     private final String databasePath = "jdbc:sqlite:src/main/resources/alcohol.sqlite";
@@ -29,7 +28,7 @@ public class DatabaseUtilsTest {
         util.init();
 
         //then
-        List<Alcohol> alcoholData = util.readDatabaseToMemory();
+        List<Alcohol> alcoholData = util.getDatabaseContent();
         Assertions.assertThat(alcoholData.size()).isEqualTo(7892);
     }
 }

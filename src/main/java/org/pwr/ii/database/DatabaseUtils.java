@@ -27,7 +27,32 @@ public class DatabaseUtils {
         Class.forName(driver);
     }
 
-    public List<Alcohol> readDatabaseToMemory() {
+    public double getMaxVoltage() {
+        String query = String.format("SELECT MAX(%s) AS %s FROM %s", TypeColumns.TYPE_VOLTAGE, TypeColumns.TYPE_VOLTAGE, TableNames.TYPES);
+        return getMaxValueForQuery(query, TypeColumns.TYPE_VOLTAGE);
+    }
+
+    public double getMaxPrice() {
+        String query = String.format("SELECT MAX(%s)AS %s FROM %s", PriceColumns.PRICE_SALE, PriceColumns.PRICE_SALE, TableNames.PRICES);
+        return getMaxValueForQuery(query, PriceColumns.PRICE_SALE);
+    }
+
+    private double getMaxValueForQuery(String query, String valueName) {
+        double result = 0d;
+        try (Connection conn = DriverManager.getConnection(databasePath)) {
+            Statement stmt = conn.createStatement();
+
+            ResultSet rs = stmt.executeQuery(query);
+            while (rs.next()) {
+                result = rs.getDouble(valueName);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public List<Alcohol> getDatabaseContent() {
         List<Alcohol> result = Lists.newArrayList();
         try (Connection conn = DriverManager.getConnection(databasePath)) {
             conn.setAutoCommit(false);

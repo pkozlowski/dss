@@ -7,13 +7,13 @@
           GridPane.columnIndex="0" GridPane.rowIndex="0"
           GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
 
-    <Text id="priceMinimum" text="Minimum price" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <Text id="priceMaximum" text="Maximum price" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <TextField
-            GridPane.columnIndex="0" GridPane.rowIndex="2">5
+    <Text text="Minimum price" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+    <Text text="Maximum price" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+    <TextField id="priceMinimum"
+               GridPane.columnIndex="0" GridPane.rowIndex="2">5
     </TextField>
-    <TextField
-            GridPane.columnIndex="1" GridPane.rowIndex="2">20
+    <TextField id="priceMaximum"
+               GridPane.columnIndex="1" GridPane.rowIndex="2">20
     </TextField>
     <Slider id="priceSlider" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="3" max="100" min="0"
             value="50"/>
@@ -22,13 +22,13 @@
     <Label text="Voltage criterion"
            GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.valignment="CENTER"/>
 
-    <Text id="voltageMinimum" text="Minimum voltage" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <Text id="voltageMaximum" text="Maximum voltage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-    <TextField
-            GridPane.columnIndex="0" GridPane.rowIndex="6">30
+    <Text text="Minimum voltage" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+    <Text text="Maximum voltage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+    <TextField id="voltageMinimum"
+               GridPane.columnIndex="0" GridPane.rowIndex="6">30
     </TextField>
-    <TextField
-            GridPane.columnIndex="1" GridPane.rowIndex="6">45
+    <TextField id="voltageMaximum"
+               GridPane.columnIndex="1" GridPane.rowIndex="6">45
     </TextField>
     <Slider id="voltageSlider" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="7" max="100"
             min="0" value="50"/>

@@ -24,7 +24,7 @@ public class Main extends Application {
     }
 
     private void setUpFindButtonListener(Scene mainScene) {
-        Button findButton = (Button) mainScene.lookup("#findButton");
+        Button findButton = ComponentProvider.getFindButton(mainScene);
         findButton.setOnAction(new FindButtonListener(mainScene));
     }
 
