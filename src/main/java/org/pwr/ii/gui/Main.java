@@ -1,4 +1,4 @@
-package sample;
+package org.pwr.ii.gui;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -9,13 +9,12 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("sample.fxml"));
-        primaryStage.setTitle("Hello World");
+    public void start(Stage primaryStage) throws Exception {
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
+        primaryStage.setTitle("Decision support system");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

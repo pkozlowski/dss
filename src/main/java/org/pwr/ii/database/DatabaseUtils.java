@@ -1,6 +1,7 @@
 package org.pwr.ii.database;
 
 import com.google.common.collect.Lists;
+import org.pwr.ii.criteria.Alcohol;
 import org.pwr.ii.database.model.AlcoholDatabase;
 import org.pwr.ii.database.model.BottleDatabase;
 import org.pwr.ii.database.model.DatabaseType;
@@ -26,8 +27,8 @@ public class DatabaseUtils {
         Class.forName(driver);
     }
 
-    public List<AlcoholDatabase> readDatabaseToMemory() {
-        List<AlcoholDatabase> result = Lists.newArrayList();
+    public List<Alcohol> readDatabaseToMemory() {
+        List<Alcohol> result = Lists.newArrayList();
         try (Connection conn = DriverManager.getConnection(databasePath)) {
             conn.setAutoCommit(false);
             Statement stmt = conn.createStatement();

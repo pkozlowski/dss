@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.control.Slider?>
-<GridPane fx:controller="sample.Controller"
+<GridPane fx:controller="org.pwr.ii.gui.Controller"
           xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
     <Text text="Price criterion"
           GridPane.columnIndex="0" GridPane.rowIndex="0"
