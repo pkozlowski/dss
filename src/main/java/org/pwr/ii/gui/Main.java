@@ -1,10 +1,14 @@
 package org.pwr.ii.gui;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.pwr.ii.gui.listener.FindButtonListener;
 
 public class Main extends Application {
 
@@ -12,8 +16,16 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
         primaryStage.setTitle("Decision support system");
-        primaryStage.setScene(new Scene(root, 300, 275));
+        Scene mainScene = new Scene(root, 300, 275);
+        primaryStage.setScene(mainScene);
         primaryStage.show();
+
+        setUpFindButtonListener(mainScene);
+    }
+
+    private void setUpFindButtonListener(Scene mainScene) {
+        Button findButton = (Button) mainScene.lookup("#findButton");
+        findButton.setOnAction(new FindButtonListener(mainScene));
     }
 
     public static void main(String[] args) {
