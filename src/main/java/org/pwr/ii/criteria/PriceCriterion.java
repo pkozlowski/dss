@@ -22,7 +22,7 @@ public class PriceCriterion extends Criterion {
 
     public double calculatePriceFunction(Alcohol alcohol) {
         if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
-        double result = 1 - Math.pow(((CriteriaUtil.getMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
+        double result = 1 - Math.pow(((CriteriaUtil.countMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
         return result;
     }
 

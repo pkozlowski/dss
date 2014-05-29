@@ -28,7 +28,7 @@ public class VoltageCriterionTest {
         Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criterion.calculate(alcohol)).isEqualTo(0.9805555, Offset.offset(0.0000001));
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.9805556, Offset.offset(0.000001));
     }
 
     @Test
@@ -39,6 +39,6 @@ public class VoltageCriterionTest {
         Criterion criterion = new VoltageCriterion(0, 2, 3);
 
         //when, then
-        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555555, Offset.offset(0.0000001));
+        assertThat(criterion.calculate(alcohol)).isEqualTo(0.5555556, Offset.offset(0.000001));
     }
 }
