@@ -20,12 +20,14 @@ public interface Alcohol {
     }
 
     default public Color getColor() {
-        return new Color(0, 0, 0, 0);
+        return new Color(255, 255, 255, 0);
     }
 
     default public String getTypeName() {
         return "unknown";
     }
+
+    public String getImageName();
 
     public double getSize();
 

@@ -5,4 +5,5 @@ public interface BottleColumns {
     public final static String TYPE_ID = "type_id";
     public final static String BOTTLE_NAME = "bottle_name";
     public final static String BOTTLE_SIZE = "bottle_size";
+    public final static String BOTTLE_COLOR = "bottle_color";
 }

@@ -1,10 +1,10 @@
 package org.pwr.ii.database;
 
-import java.util.List;
-
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 import org.pwr.ii.criteria.Alcohol;
+
+import java.util.List;
 
 public class DatabaseUtilsTest {
     private final String databasePath = "jdbc:sqlite:src/main/resources/alcohol.sqlite";

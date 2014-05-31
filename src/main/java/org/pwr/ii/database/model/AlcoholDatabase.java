@@ -44,9 +44,16 @@ public class AlcoholDatabase implements Alcohol {
         return bottle.getTypeName();
     }
 
+    @Override
+    public String getImageName() {
+        return bottle.getBottleName().replaceAll(" ", "_");
+    }
+
     public double getSize() {
         return bottle.getBottleSize();
     }
 
-    public Color getColor() {return bottle.getColor();}
+    public Color getColor() {
+        return bottle.getColor();
+    }
 }

@@ -91,8 +91,11 @@ public class DatabaseUtils {
         String bottle_name = rs.getString(BottleColumns.BOTTLE_NAME);
         int bottle_size = rs.getInt(BottleColumns.BOTTLE_SIZE);
 
-        //FIXME not implemented yet
-        Color color = new Color(0, 0, 0, 0);
+        String bottleColorAsString = rs.getString(BottleColumns.BOTTLE_COLOR);
+        String[] splitOfBottleColor = bottleColorAsString.split(",");
+        Color color = new Color(Integer.valueOf(splitOfBottleColor[0]), Integer.valueOf(splitOfBottleColor[1]),
+                Integer.valueOf(splitOfBottleColor[2]), Integer.valueOf(splitOfBottleColor[3]));
+
         BottleDatabase bottle = new BottleDatabase(type, color, bottle_name, bottle_size);
         return bottle;
     }
