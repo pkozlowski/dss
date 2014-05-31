@@ -1,9 +1,9 @@
 package org.pwr.ii.database.model;
 
+import javafx.scene.paint.Color;
 import org.pwr.ii.criteria.Alcohol;
 
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 

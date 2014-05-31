@@ -1,6 +1,7 @@
 package org.pwr.ii.criteria;
 
-import java.awt.*;
+import javafx.scene.paint.Color;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public interface Alcohol {
     }
 
     default public Color getColor() {
-        return new Color(255, 255, 255, 0);
+        return new Color(1, 1, 1, 0);
     }
 
     default public String getTypeName() {

@@ -1,6 +1,7 @@
 package org.pwr.ii.database;
 
 import com.google.common.collect.Lists;
+import javafx.scene.paint.Color;
 import org.pwr.ii.criteria.Alcohol;
 import org.pwr.ii.database.model.AlcoholDatabase;
 import org.pwr.ii.database.model.BottleDatabase;
@@ -10,7 +11,6 @@ import org.pwr.ii.database.names.PriceColumns;
 import org.pwr.ii.database.names.TableNames;
 import org.pwr.ii.database.names.TypeColumns;
 
-import java.awt.*;
 import java.sql.*;
 import java.util.List;
 
@@ -105,8 +105,8 @@ public class DatabaseUtils {
 
         String bottleColorAsString = rs.getString(BottleColumns.BOTTLE_COLOR);
         String[] splitOfBottleColor = bottleColorAsString.split(",");
-        Color color = new Color(Integer.valueOf(splitOfBottleColor[0]), Integer.valueOf(splitOfBottleColor[1]),
-                Integer.valueOf(splitOfBottleColor[2]), Integer.valueOf(splitOfBottleColor[3]));
+        Color color = new Color(Integer.parseInt(splitOfBottleColor[0])/255d, Integer.parseInt(splitOfBottleColor[1])/255d,
+                Integer.parseInt(splitOfBottleColor[2])/255d, Integer.parseInt(splitOfBottleColor[3])/255d);
 
         BottleDatabase bottle = new BottleDatabase(type, color, bottle_name, bottle_size);
         return bottle;

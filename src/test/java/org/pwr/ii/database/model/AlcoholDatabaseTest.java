@@ -1,9 +1,9 @@
 package org.pwr.ii.database.model;
 
+import javafx.scene.paint.Color;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
@@ -16,7 +16,7 @@ public class AlcoholDatabaseTest {
         DatabaseType type = new DatabaseType(typeVoltage, typeName);
         String bottleName = "Apple_Brandy.png";
         int bottleSize = 700;
-        Color color = new Color(1, 2, 3, 5);
+        Color color = new Color(1/255d, 2/255d, 3/255d, 5/255d);
         BottleDatabase bottle = new BottleDatabase(type, color, bottleName, bottleSize);
         double priceRetail = 20.5;
         double priceSale = 22.6;
