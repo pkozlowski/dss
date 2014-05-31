@@ -1,9 +1,7 @@
 package org.pwr.ii.gui;
 
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 /**
  * Created by Vortim on 2014-05-29.
@@ -39,6 +37,16 @@ public class ComponentProvider {
 
     public static TextField getVoltageMaximumField(Scene scene) {
         return (TextField) scene.lookup("#voltageMaximum");
+    }
+    public static ColorPicker getColorPicker(Scene scene){
+        return (ColorPicker) scene.lookup("#colorPicker");
+    }
+    public static Slider getColorSlider(Scene scene){
+        return (Slider) scene.lookup("#colorSlider");
+    }
+
+    public static Accordion getAccordion(MainScene scene) {
+        return (Accordion) scene.lookup("#accordionList");
     }
 }
 
