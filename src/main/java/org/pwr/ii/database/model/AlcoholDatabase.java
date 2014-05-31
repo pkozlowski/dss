@@ -2,6 +2,8 @@ package org.pwr.ii.database.model;
 
 import org.pwr.ii.criteria.Alcohol;
 
+import java.awt.*;
+
 public class AlcoholDatabase implements Alcohol {
 
     private final BottleDatabase bottle;
@@ -45,4 +47,6 @@ public class AlcoholDatabase implements Alcohol {
     public double getSize() {
         return bottle.getBottleSize();
     }
+
+    public Color getColor() {return bottle.getColor();}
 }

@@ -3,6 +3,8 @@ package org.pwr.ii.database.model;
 import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
+import java.awt.*;
+
 public class AlcoholDatabaseTest {
 
     @Test
@@ -12,7 +14,8 @@ public class AlcoholDatabaseTest {
         DatabaseType type = new DatabaseType(typeVoltage, typeName);
         String bottleName = "Mlodziutka i fajniutka";
         int bottleSize = 700;
-        BottleDatabase bottle = new BottleDatabase(type, bottleName, bottleSize);
+        Color color = new Color(1,2,3,5);
+        BottleDatabase bottle = new BottleDatabase(type, color,bottleName, bottleSize);
         double priceRetail = 20.5;
         double priceSale = 22.6;
         int priceDateStart = 123123;
@@ -24,6 +27,7 @@ public class AlcoholDatabaseTest {
         Assertions.assertThat(alcoholDatabase.getPrice()).isEqualTo(priceSale);
         Assertions.assertThat(alcoholDatabase.getSize()).isEqualTo(bottleSize);
         Assertions.assertThat(alcoholDatabase.getVoltage()).isEqualTo(typeVoltage);
+        Assertions.assertThat(alcoholDatabase.getColor()).isEqualTo(color);
     }
 
 }

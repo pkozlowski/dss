@@ -10,6 +10,7 @@ import org.pwr.ii.database.names.PriceColumns;
 import org.pwr.ii.database.names.TableNames;
 import org.pwr.ii.database.names.TypeColumns;
 
+import java.awt.*;
 import java.sql.*;
 import java.util.List;
 
@@ -89,7 +90,10 @@ public class DatabaseUtils {
     private BottleDatabase createBottle(ResultSet rs, DatabaseType type) throws SQLException {
         String bottle_name = rs.getString(BottleColumns.BOTTLE_NAME);
         int bottle_size = rs.getInt(BottleColumns.BOTTLE_SIZE);
-        BottleDatabase bottle = new BottleDatabase(type, bottle_name, bottle_size);
+
+        //FIXME not implemented yet
+        Color color = new Color(0, 0, 0, 0);
+        BottleDatabase bottle = new BottleDatabase(type, color, bottle_name, bottle_size);
         return bottle;
     }
 

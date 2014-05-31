@@ -1,13 +1,17 @@
 package org.pwr.ii.database.model;
 
+import java.awt.*;
+
 public class BottleDatabase {
 
     private final DatabaseType type;
     private final String bottleName;
     private final int bottleSize;
+    private final Color color;
 
-    public BottleDatabase(DatabaseType type, String bottleName, int bottleSize) {
+    public BottleDatabase(DatabaseType type, Color color, String bottleName, int bottleSize) {
         this.type = type;
+        this.color = color;
         this.bottleName = bottleName;
         this.bottleSize = bottleSize;
     }
@@ -36,5 +40,9 @@ public class BottleDatabase {
 
     public String getTypeName() {
         return type.getTypeName();
+    }
+
+    public Color getColor() {
+        return color;
     }
 }
