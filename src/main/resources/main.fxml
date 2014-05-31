@@ -28,22 +28,22 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price criterion" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price criterion" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum price" GridPane.rowIndex="1" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum price" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="priceMinimum" GridPane.rowIndex="2" />
-            <TextField fx:id="priceMaximum" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Slider fx:id="priceSlider" GridPane.rowIndex="3" />
-            <Slider fx:id="voltageSlider" GridPane.rowIndex="7" />
-            <Slider fx:id="colorSlider" GridPane.rowIndex="10" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voltage criterion" GridPane.rowIndex="4" />
+            <TextField fx:id="priceMinimum" GridPane.rowIndex="2">5</TextField>
+            <TextField fx:id="priceMaximum" GridPane.columnIndex="1" GridPane.rowIndex="2">15</TextField>
+            <Slider fx:id="priceSlider" GridPane.rowIndex="3" GridPane.columnSpan="2" value="50" min="0" max="100"/>
+            <Slider fx:id="voltageSlider" GridPane.rowIndex="7" GridPane.columnSpan="2" value="50" min="0" max="100"/>
+            <Slider fx:id="colorSlider" GridPane.rowIndex="10" GridPane.columnSpan="2" value="50" min="0" max="100"/>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voltage criterion" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.halignment="CENTER" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum voltage" GridPane.rowIndex="5" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum voltage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <TextField fx:id="voltageMinimum" GridPane.rowIndex="6" />
-            <TextField fx:id="voltageMaximum" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color criterion" GridPane.rowIndex="8" />
-            <Button fx:id="findButton" mnemonicParsing="false" text="Find" GridPane.rowIndex="11" />
-            <ColorPicker fx:id="colorPicker" GridPane.rowIndex="9" />
+            <TextField fx:id="voltageMinimum" GridPane.rowIndex="6">10</TextField>
+            <TextField fx:id="voltageMaximum" GridPane.columnIndex="1" GridPane.rowIndex="6">25</TextField>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color criterion" GridPane.rowIndex="8" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
+            <Button fx:id="findButton" mnemonicParsing="false" text="Find" GridPane.rowIndex="11" GridPane.columnSpan="2"/>
+            <ColorPicker fx:id="colorPicker" GridPane.rowIndex="9" GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
          </children>
       </GridPane>
    </right>
