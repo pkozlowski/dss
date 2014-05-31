@@ -1,38 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<GridPane fx:controller="org.pwr.ii.gui.Controller"
-          xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
-    <Text text="Price criterion"
-          GridPane.columnIndex="0" GridPane.rowIndex="0"
-          GridPane.columnSpan="2" GridPane.halignment="CENTER"/>
-
-    <Text text="Minimum price" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-    <Text text="Maximum price" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-    <TextField id="priceMinimum"
-               GridPane.columnIndex="0" GridPane.rowIndex="2">5
-    </TextField>
-    <TextField id="priceMaximum"
-               GridPane.columnIndex="1" GridPane.rowIndex="2">20
-    </TextField>
-    <Slider id="priceSlider" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="3" max="100" min="0"
-            value="50"/>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
 
 
-    <Label text="Voltage criterion"
-           GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" GridPane.valignment="CENTER"/>
-
-    <Text text="Minimum voltage" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-    <Text text="Maximum voltage" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
-    <TextField id="voltageMinimum"
-               GridPane.columnIndex="0" GridPane.rowIndex="6">30
-    </TextField>
-    <TextField id="voltageMaximum"
-               GridPane.columnIndex="1" GridPane.rowIndex="6">45
-    </TextField>
-    <Slider id="voltageSlider" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="7" max="100"
-            min="0" value="50"/>
-    <Button id="findButton" text="Find!" GridPane.columnSpan="2" GridPane.columnIndex="0" GridPane.rowIndex="8"
-            GridPane.halignment="CENTER"/>
-
-</GridPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <right>
+      <GridPane BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Price criterion" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum price" GridPane.rowIndex="1" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum price" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="priceMinimum" GridPane.rowIndex="2" />
+            <TextField fx:id="priceMaximum" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Slider fx:id="priceSlider" GridPane.rowIndex="3" />
+            <Slider fx:id="voltageSlider" GridPane.rowIndex="7" />
+            <Slider fx:id="colorSlider" GridPane.rowIndex="10" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Voltage criterion" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Minimum voltage" GridPane.rowIndex="5" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Maximum voltage" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="voltageMinimum" GridPane.rowIndex="6" />
+            <TextField fx:id="voltageMaximum" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Color criterion" GridPane.rowIndex="8" />
+            <Button fx:id="findButton" mnemonicParsing="false" text="Find" GridPane.rowIndex="11" />
+            <ColorPicker fx:id="colorPicker" GridPane.rowIndex="9" />
+         </children>
+      </GridPane>
+   </right>
+   <center>
+      <Accordion fx:id="accordionList" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
