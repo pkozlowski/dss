@@ -1,5 +1,6 @@
 package org.pwr.ii.criteria;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
 import java.awt.image.BufferedImage;
@@ -30,7 +31,7 @@ public interface Alcohol {
         return "unknown";
     }
 
-    public BufferedImage getImage() throws IOException;
+    public Image getImage() throws IOException;
 
     public double getSize();
 

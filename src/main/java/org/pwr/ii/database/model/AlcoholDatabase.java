@@ -1,5 +1,6 @@
 package org.pwr.ii.database.model;
 
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import org.pwr.ii.criteria.Alcohol;
 
@@ -48,10 +49,11 @@ public class AlcoholDatabase implements Alcohol {
     }
 
     @Override
-    public BufferedImage getImage() throws IOException {
-        String imageFileName = bottle.getBottleName().replaceAll(" ", "_");
-        return ImageIO.read(Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream("bottles\\" + imageFileName));
+    public Image getImage() throws IOException {
+        String imageFileName = bottle.getTypeName().replaceAll(" ", "_");
+        String path = "bottles\\" + imageFileName + ".png";
+        return new Image(Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream(path));
     }
 
     public double getSize() {
