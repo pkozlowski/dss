@@ -16,8 +16,10 @@ import java.util.List;
 
 public class DatabaseUtils {
 
+    private double maxPrice;
     private String driver;
     private final String databasePath;
+    private double maxVoltage;
 
     public DatabaseUtils(String driver, String databasePath) {
         this.driver = driver;
@@ -26,14 +28,24 @@ public class DatabaseUtils {
 
     public void init() throws ClassNotFoundException {
         Class.forName(driver);
+        maxVoltage = countMaxVoltage();
+        maxPrice = countMaxPrice();
     }
 
     public double getMaxVoltage() {
+        return maxVoltage;
+    }
+
+    public double getMaxPrice() {
+        return maxPrice;
+    }
+
+    private double countMaxVoltage() {
         String query = String.format("SELECT MAX(%s) AS %s FROM %s", TypeColumns.TYPE_VOLTAGE, TypeColumns.TYPE_VOLTAGE, TableNames.TYPES);
         return getMaxValueForQuery(query, TypeColumns.TYPE_VOLTAGE);
     }
 
-    public double getMaxPrice() {
+    public double countMaxPrice() {
         String query = String.format("SELECT MAX(%s)AS %s FROM %s", PriceColumns.PRICE_SALE, PriceColumns.PRICE_SALE, TableNames.PRICES);
         return getMaxValueForQuery(query, PriceColumns.PRICE_SALE);
     }
