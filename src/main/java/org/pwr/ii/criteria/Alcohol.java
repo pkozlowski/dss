@@ -1,6 +1,8 @@
 package org.pwr.ii.criteria;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 /**
  * Author: Piotr Kozłowski
@@ -27,7 +29,7 @@ public interface Alcohol {
         return "unknown";
     }
 
-    public String getImageName();
+    public BufferedImage getImage() throws IOException;
 
     public double getSize();
 

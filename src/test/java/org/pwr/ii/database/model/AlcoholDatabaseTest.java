@@ -4,15 +4,17 @@ import org.fest.assertions.api.Assertions;
 import org.junit.Test;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class AlcoholDatabaseTest {
 
     @Test
-    public void shouldTestAlcoholDatabaseTest() {
+    public void shouldTestAlcoholDatabaseTest() throws IOException {
         int typeVoltage = 38;
         String typeName = "Test whiskey";
         DatabaseType type = new DatabaseType(typeVoltage, typeName);
-        String bottleName = "Mlodziutka i fajniutka";
+        String bottleName = "Apple_Brandy.png";
         int bottleSize = 700;
         Color color = new Color(1, 2, 3, 5);
         BottleDatabase bottle = new BottleDatabase(type, color, bottleName, bottleSize);
@@ -29,7 +31,7 @@ public class AlcoholDatabaseTest {
         Assertions.assertThat(alcoholDatabase.getSize()).isEqualTo(bottleSize);
         Assertions.assertThat(alcoholDatabase.getVoltage()).isEqualTo(typeVoltage);
         Assertions.assertThat(alcoholDatabase.getColor()).isEqualTo(color);
-        Assertions.assertThat(alcoholDatabase.getImageName()).isEqualTo(bottleName.replaceAll(" ", "_"));
+        Assertions.assertThat(alcoholDatabase.getImage()).isInstanceOf(BufferedImage.class);
     }
 
 }

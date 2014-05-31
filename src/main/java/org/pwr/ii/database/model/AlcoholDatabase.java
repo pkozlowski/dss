@@ -2,7 +2,10 @@ package org.pwr.ii.database.model;
 
 import org.pwr.ii.criteria.Alcohol;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class AlcoholDatabase implements Alcohol {
 
@@ -45,8 +48,10 @@ public class AlcoholDatabase implements Alcohol {
     }
 
     @Override
-    public String getImageName() {
-        return bottle.getBottleName().replaceAll(" ", "_");
+    public BufferedImage getImage() throws IOException {
+        String imageFileName = bottle.getBottleName().replaceAll(" ", "_");
+        return ImageIO.read(Thread.currentThread().getContextClassLoader()
+                .getResourceAsStream("bottles\\" + imageFileName));
     }
 
     public double getSize() {
