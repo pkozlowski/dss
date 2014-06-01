@@ -8,15 +8,15 @@ import org.junit.Test;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-@Ignore
+
 public class AlcoholDatabaseTest {
 
     @Test
     public void shouldTestAlcoholDatabaseTest() throws IOException {
         int typeVoltage = 38;
-        String typeName = "Test whiskey";
+        String typeName = "Canadian Whisky";
         DatabaseType type = new DatabaseType(typeVoltage, typeName);
-        String bottleName = "Apple_Brandy.png";
+        String bottleName = "Apple_Brandy";
         int bottleSize = 700;
         Color color = new Color(1/255d, 2/255d, 3/255d, 5/255d);
         BottleDatabase bottle = new BottleDatabase(type, color, bottleName, bottleSize);
