@@ -5,6 +5,7 @@ import com.google.common.collect.Lists;
 import javafx.scene.paint.Color;
 import org.fest.assertions.api.Assertions;
 import org.fest.assertions.data.Offset;
+import org.junit.Before;
 import org.junit.Test;
 import org.pwr.ii.database.model.AlcoholDatabase;
 import org.pwr.ii.database.model.BottleDatabase;
@@ -12,6 +13,7 @@ import org.pwr.ii.database.model.DatabaseType;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -20,38 +22,42 @@ import static org.mockito.Mockito.when;
 
 public class CriteriaCalculatorTest {
 
+    Alcohol piwoPiast;
+    Alcohol cytrynowka;
+    Alcohol winoFresco;
+    Alcohol piwoPiastMocny;
+    List<Alcohol> alcohols;
+
+    @Before
+    public void setUp() throws Exception {
+        piwoPiast = createAlcohol(2.5, 3.2, "piwoPiast");
+        cytrynowka = createAlcohol(28, 38, "cytrynowka");
+        winoFresco = createAlcohol(22, 15, "cytrynowka");
+        piwoPiastMocny = createAlcohol(4, 6, "piwoPiastMocny");
+        alcohols = Lists.newArrayList(piwoPiast, cytrynowka, winoFresco, piwoPiastMocny);
+    }
+
+
     @Test
     public void should_return_values_from_documentations() {
         //given
-        CriteriaCalculator criteriaCalculator = new CriteriaCalculator();
+        CriteriaCalculator criteriaCalculator = new CriteriaCalculator(alcohols);
         criteriaCalculator.addCriterion(new PriceCriterion(0.2, 3, 15, 28));
         criteriaCalculator.addCriterion(new VoltageCriterion(0.8, 3, 10, 38));
-        Alcohol piwoPiast = mock(Alcohol.class);
-        when(piwoPiast.getPrice()).thenReturn(2.5);
-        when(piwoPiast.getVoltage()).thenReturn(3.2);
 
         //when, then
         assertThat(criteriaCalculator.calculate(piwoPiast)).isEqualTo(0.984998, Offset.offset(0.000001));
+        assertThat(criteriaCalculator.calculate(cytrynowka)).isEqualTo(0.3581852, Offset.offset(0.000001));
+        assertThat(criteriaCalculator.calculate(winoFresco)).isEqualTo(0.9168600, Offset.offset(0.000001));
+        assertThat(criteriaCalculator.calculate(piwoPiastMocny)).isEqualTo(0.9999030, Offset.offset(0.000001));
     }
 
     @Test
     public void shouldCompareAlcohols() {
         //given
-        List<Alcohol> alcohols = Lists.newArrayList();
-        final Alcohol alcohol_normal = createAlcohol(16d, 11);
-        final Alcohol alcohol_best = createAlcohol(7d, 7);
-        final Alcohol alcohol_worst = createAlcohol(150d, 50);
-
-        alcohols.add(alcohol_worst);
-        alcohols.add(alcohol_normal);
-        alcohols.add(alcohol_best);
         CriteriaCalculator criteriaCalculator = new CriteriaCalculator(alcohols);
-        criteriaCalculator.addCriterion(new PriceCriterion(0.5, 3, 15, 28));
-        criteriaCalculator.addCriterion(new VoltageCriterion(0.5, 3, 10, 38));
-
-        Assertions.assertThat(alcohols.get(0)).isEqualTo(alcohol_worst);
-        Assertions.assertThat(alcohols.get(1)).isEqualTo(alcohol_normal);
-        Assertions.assertThat(alcohols.get(2)).isEqualTo(alcohol_best);
+        criteriaCalculator.addCriterion(new PriceCriterion(0.2, 3, 15, 28));
+        criteriaCalculator.addCriterion(new VoltageCriterion(0.8, 3, 10, 38));
 
         //when
         Stream<Alcohol> bestAlcohols = criteriaCalculator.getBestAlcohols();
@@ -63,13 +69,16 @@ public class CriteriaCalculatorTest {
             @Override
             public void accept(Alcohol consumedAlcohol) {
                 if (iteration == 0) {
-                    Assertions.assertThat(consumedAlcohol).isEqualTo(alcohol_best);
+                    Assertions.assertThat(consumedAlcohol).isEqualTo(piwoPiastMocny);
                 }
                 if (iteration == 1) {
-                    Assertions.assertThat(consumedAlcohol).isEqualTo(alcohol_normal);
+                    Assertions.assertThat(consumedAlcohol).isEqualTo(piwoPiast);
                 }
                 if (iteration == 2) {
-                    Assertions.assertThat(consumedAlcohol).isEqualTo(alcohol_worst);
+                    Assertions.assertThat(consumedAlcohol).isEqualTo(winoFresco);
+                }
+                if (iteration == 3) {
+                    Assertions.assertThat(consumedAlcohol).isEqualTo(cytrynowka);
                 }
                 iteration++;
             }
@@ -77,17 +86,19 @@ public class CriteriaCalculatorTest {
 
     }
 
-    private Alcohol createAlcohol(double priceSale, int typeVoltage) {
-        String typeName = "Test type name";
+
+    private Alcohol createAlcohol(double priceSale, double typeVoltage, String name) {
+        String typeName = name;
         DatabaseType databaseType = new DatabaseType(typeVoltage, typeName);
         Color color = new Color(1d, 1d, 1d, 1d);
-        String bottleName = "Test bottle name";
+        String bottleName = name;
         int bottleSize = 600;
         BottleDatabase bottleDatabase = new BottleDatabase(databaseType, color, bottleName, bottleSize);
         double priceRetail = 20;
         int priceDateStart = 123;
         int priceDateEnd = 321;
-        return new AlcoholDatabase(bottleDatabase, priceRetail, priceSale, priceDateStart, priceDateEnd);
+        AlcoholDatabase alcoholDatabase = new AlcoholDatabase(bottleDatabase, priceRetail, priceSale, priceDateStart, priceDateEnd);
+        return alcoholDatabase;
     }
 
 }
