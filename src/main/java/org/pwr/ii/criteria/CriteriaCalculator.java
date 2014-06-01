@@ -28,12 +28,9 @@ public class CriteriaCalculator {
     }
 
     public java.util.stream.Stream<Alcohol> getBestAlcohols() {
-        return alcohols.stream().sorted(new Comparator<Alcohol>() {
-            @Override
-            public int compare(Alcohol o1, Alcohol o2) {
-                int modulator = 100000000;
-                return (int) ((calculate(o1) - calculate(o2))* modulator);
-            }
+        return alcohols.stream().sorted((o1, o2) -> {
+            int modulator = 100000000;
+            return (int) ((calculate(o2) - calculate(o1)) * modulator);
         });
     }
 
@@ -41,7 +38,8 @@ public class CriteriaCalculator {
     double calculate(Alcohol alcohol) {
         double result = 0.0;
         for (Criterion criterion : criteria) {
-            result += criterion.calculate(alcohol);
+            double value = criterion.calculate(alcohol);
+            result += value;
         }
         return result;
     }
