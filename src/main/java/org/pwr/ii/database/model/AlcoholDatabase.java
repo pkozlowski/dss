@@ -52,8 +52,15 @@ public class AlcoholDatabase implements Alcohol {
     public Image getImage() throws IOException {
         String imageFileName = bottle.getTypeName().replaceAll(" ", "_");
         String path = "bottles\\" + imageFileName + ".png";
-        return new Image(Thread.currentThread().getContextClassLoader()
-                .getResourceAsStream(path));
+
+        try {
+            return new Image(Thread.currentThread().getContextClassLoader()
+                    .getResourceAsStream(path));
+        } catch (NullPointerException e) {
+            System.out.println("Could not find image: " + path);
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public double getSize() {
