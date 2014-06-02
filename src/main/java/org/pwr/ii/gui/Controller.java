@@ -54,7 +54,8 @@ public class Controller implements EventHandler<ActionEvent> {
 
     private CriteriaCalculator setUpCriteriaCalculator() {
         CriteriaCalculator calculator = new CriteriaCalculator(alcohols);
-        double sumOfAllSliders = scene.getPriceSlider().getValue() + scene.getVoltageSlider().getValue() + scene.getColorSlider().getValue();
+        double sumOfAllSliders = scene.getPriceSlider().getValue() + scene.getVoltageSlider().getValue()
+                + scene.getColorSlider().getValue() + scene.getSizeSlider().getValue();
 
         double priceFactor = scene.getPriceSlider().getValue() / sumOfAllSliders;
         calculator.addCriterion(createPriceCriterion(priceFactor));
@@ -65,7 +66,15 @@ public class Controller implements EventHandler<ActionEvent> {
         double colorFactor = scene.getColorSlider().getValue() / sumOfAllSliders;
         calculator.addCriterion(createColorCriterion(colorFactor));
 
+        double sizeFactor = scene.getSizeSlider().getValue() / sumOfAllSliders;
+        calculator.addCriterion(createSizeCriterion(sizeFactor));
+
         return calculator;
+    }
+
+    private Criterion createSizeCriterion(double sizeFactor) {
+        double size = getNumericValueFromTextField(scene.getSizeField());
+        return new SizeCriterion(sizeFactor, size, database.getMaxSize());
     }
 
     private Criterion createColorCriterion(double colorFactor) {

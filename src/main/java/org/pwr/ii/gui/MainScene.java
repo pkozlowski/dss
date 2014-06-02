@@ -20,6 +20,8 @@ public class MainScene extends Scene {
     private TextField priceMinimumField;
     private TextField priceMaximumField;
     private Slider priceSlider;
+    private TextField sizeField;
+    private Slider sizeSlider;
     private Button findButton;
     private Accordion accordion;
 
@@ -33,9 +35,17 @@ public class MainScene extends Scene {
 
         initPriceComponents(eventFilter);
         initVoltageComponents(eventFilter);
+        initSizeComponents(eventFilter);
         initColorComponents();
         initListComponent();
         findButton = ComponentProvider.getFindButton(this);
+    }
+
+    private void initSizeComponents(NumericEventFilter eventFilter) {
+        sizeField = ComponentProvider.getSizeField(this);
+        sizeField.addEventFilter(KeyEvent.KEY_TYPED, eventFilter);
+
+        sizeSlider = ComponentProvider.getSizeSlider(this);
     }
 
     private void initListComponent() {
@@ -105,6 +115,14 @@ public class MainScene extends Scene {
 
     public Accordion getAccordion() {
         return accordion;
+    }
+
+    public TextField getSizeField() {
+        return sizeField;
+    }
+
+    public Slider getSizeSlider() {
+        return sizeSlider;
     }
 }
 

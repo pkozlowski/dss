@@ -16,6 +16,6 @@ public class SizeCriterion extends Criterion {
 
     @Override
     public double calculate(Alcohol alcohol) {
-        return 1 - Math.abs(alcohol.getSize()-size)/maxSize;
+        return 1 - Math.abs(alcohol.getSize() - size) / maxSize;
     }
 }

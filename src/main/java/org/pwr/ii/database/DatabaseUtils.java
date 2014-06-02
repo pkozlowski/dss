@@ -20,6 +20,7 @@ public class DatabaseUtils {
     private String driver;
     private final String databasePath;
     private double maxVoltage;
+    private double maxSize;
 
     public DatabaseUtils(String driver, String databasePath) {
         this.driver = driver;
@@ -30,6 +31,7 @@ public class DatabaseUtils {
         Class.forName(driver);
         maxVoltage = countMaxVoltage();
         maxPrice = countMaxPrice();
+        maxSize = countMaxSize();
     }
 
     public double getMaxVoltage() {
@@ -40,6 +42,10 @@ public class DatabaseUtils {
         return maxPrice;
     }
 
+    public double getMaxSize() {
+        return maxSize;
+    }
+
     private double countMaxVoltage() {
         String query = String.format("SELECT MAX(%s) AS %s FROM %s", TypeColumns.TYPE_VOLTAGE, TypeColumns.TYPE_VOLTAGE, TableNames.TYPES);
         return getMaxValueForQuery(query, TypeColumns.TYPE_VOLTAGE);
@@ -48,6 +54,11 @@ public class DatabaseUtils {
     public double countMaxPrice() {
         String query = String.format("SELECT MAX(%s)AS %s FROM %s", PriceColumns.PRICE_SALE, PriceColumns.PRICE_SALE, TableNames.PRICES);
         return getMaxValueForQuery(query, PriceColumns.PRICE_SALE);
+    }
+
+    private double countMaxSize() {
+        String query = String.format("SELECT MAX(%s)AS %s FROM %s", BottleColumns.BOTTLE_SIZE, BottleColumns.BOTTLE_SIZE, TableNames.BOTTLES);
+        return getMaxValueForQuery(query, BottleColumns.BOTTLE_SIZE);
     }
 
     private double getMaxValueForQuery(String query, String valueName) {
@@ -105,8 +116,8 @@ public class DatabaseUtils {
 
         String bottleColorAsString = rs.getString(BottleColumns.BOTTLE_COLOR);
         String[] splitOfBottleColor = bottleColorAsString.split(",");
-        Color color = new Color(Integer.parseInt(splitOfBottleColor[0])/255d, Integer.parseInt(splitOfBottleColor[1])/255d,
-                Integer.parseInt(splitOfBottleColor[2])/255d, Integer.parseInt(splitOfBottleColor[3])/255d);
+        Color color = new Color(Integer.parseInt(splitOfBottleColor[0]) / 255d, Integer.parseInt(splitOfBottleColor[1]) / 255d,
+                Integer.parseInt(splitOfBottleColor[2]) / 255d, Integer.parseInt(splitOfBottleColor[3]) / 255d);
 
         BottleDatabase bottle = new BottleDatabase(type, color, bottle_name, bottle_size);
         return bottle;
@@ -118,4 +129,6 @@ public class DatabaseUtils {
         DatabaseType type = new DatabaseType(typeVoltage, typeName);
         return type;
     }
+
+
 }
