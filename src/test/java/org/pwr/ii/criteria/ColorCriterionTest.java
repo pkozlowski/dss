@@ -16,7 +16,7 @@ public class ColorCriterionTest {
         double factor = 0.4;
         // Distances are pow 2, to avoid Math.sqrt usage
         double maxDistance = 510 * 510/255d;
-        ColorCriterion criterion = new ColorCriterion(factor, new Color(123/255d, 123/255d, 123/255d, 123/255d));
+        ColorCriterion criterion = new ColorCriterion(new Color(123/255d, 123/255d, 123/255d, 123/255d));
         Alcohol alcohol = mock(Alcohol.class);
         when(alcohol.getColor()).thenReturn(new Color(222/255d, 222/255d, 222/255d, 222/255d));
 
@@ -24,7 +24,7 @@ public class ColorCriterionTest {
         double result = criterion.calculate(alcohol);
 
         //then
-        Assertions.assertThat(result).isEqualTo(1 - 198 * 198 / 255d * factor / maxDistance, Offset.offset(0.0000001));
+        Assertions.assertThat(result).isEqualTo(1-39204/260100d, Offset.offset(0.0000001));
     }
 
 }
