@@ -48,7 +48,7 @@ public class Controller implements EventHandler<ActionEvent> {
         List<Alcohol> alcoholList = calculator.getBestAlcohols().collect(Collectors.toList());
         for (int i = 0; i < alcoholList.size() && i < NUMBER_OF_RESULTS; i++) {
             Alcohol alcohol = alcoholList.get(i);
-            accordion.getPanes().add(new BottleTitledPane(alcohol));
+            accordion.getPanes().add(new BottleTitledPane(alcohol, calculator));
         }
     }
 
