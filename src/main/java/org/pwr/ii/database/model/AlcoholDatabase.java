@@ -9,18 +9,11 @@ import java.io.IOException;
 public class AlcoholDatabase implements Alcohol {
 
     private final BottleDatabase bottle;
-    private final double priceRetail;
     private final double priceSale;
-    private final int priceDateStart;
-    private final int priceDateEnd;
 
-    public AlcoholDatabase(BottleDatabase bottle, double priceRetail, double priceSale, int priceDateStart,
-                           int priceDateEnd) {
+    public AlcoholDatabase(BottleDatabase bottle, double priceSale) {
         this.bottle = bottle;
-        this.priceRetail = priceRetail;
         this.priceSale = priceSale;
-        this.priceDateStart = priceDateStart;
-        this.priceDateEnd = priceDateEnd;
     }
 
     public String getName() {
@@ -40,7 +33,7 @@ public class AlcoholDatabase implements Alcohol {
     }
 
     @Override
-    public Image getImage(){
+    public Image getImage() {
         String imageFileName = bottle.getTypeName().replaceAll(" ", "_");
         String path = "bottles\\" + imageFileName + ".png";
         try {

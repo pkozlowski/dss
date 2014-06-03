@@ -103,11 +103,8 @@ public class DatabaseUtils {
     }
 
     private AlcoholDatabase createPrice(ResultSet rs, BottleDatabase bottle) throws SQLException {
-        double priceRetail = rs.getDouble(PriceColumns.PRICE_RETAIL);
         double priceSale = rs.getDouble(PriceColumns.PRICE_SALE);
-        int priceDateStart = rs.getInt(PriceColumns.PRICE_DATE_START);
-        int priceDateEnd = rs.getInt(PriceColumns.PRICE_DATE_END);
-        return new AlcoholDatabase(bottle, priceRetail, priceSale, priceDateStart, priceDateEnd);
+        return new AlcoholDatabase(bottle, priceSale);
     }
 
     private BottleDatabase createBottle(ResultSet rs, DatabaseType type) throws SQLException {

@@ -18,12 +18,8 @@ public class AlcoholDatabaseTest {
         int bottleSize = 700;
         Color color = new Color(1 / 255d, 2 / 255d, 3 / 255d, 5 / 255d);
         BottleDatabase bottle = new BottleDatabase(type, color, bottleName, bottleSize);
-        double priceRetail = 20.5;
         double priceSale = 22.6;
-        int priceDateStart = 123123;
-        int priceDateEnd = 3535245;
-        AlcoholDatabase alcoholDatabase = new AlcoholDatabase(bottle, priceRetail,
-                priceSale, priceDateStart, priceDateEnd);
+        AlcoholDatabase alcoholDatabase = new AlcoholDatabase(bottle, priceSale);
 
         Assertions.assertThat(alcoholDatabase.getTypeName()).isEqualTo(typeName);
         Assertions.assertThat(alcoholDatabase.getName()).isEqualTo(bottleName);

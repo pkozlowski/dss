@@ -80,9 +80,7 @@ public class CriteriaCalculatorTest {
                 iteration++;
             }
         });
-
     }
-
 
     private Alcohol createAlcohol(double priceSale, double typeVoltage, String name) {
         String typeName = "";
@@ -90,10 +88,7 @@ public class CriteriaCalculatorTest {
         Color color = new Color(1d, 1d, 1d, 1d);
         int bottleSize = 600;
         BottleDatabase bottleDatabase = new BottleDatabase(databaseType, color, name, bottleSize);
-        double priceRetail = 20;
-        int priceDateStart = 123;
-        int priceDateEnd = 321;
-        return new AlcoholDatabase(bottleDatabase, priceRetail, priceSale, priceDateStart, priceDateEnd);
+        return new AlcoholDatabase(bottleDatabase, priceSale);
     }
 
 }
