@@ -2,6 +2,7 @@ package org.pwr.ii.gui.components;
 
 import javafx.geometry.Insets;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
@@ -19,13 +20,18 @@ import java.io.IOException;
  * Date: 2014-05-31.
  */
 public class BottleTitledPane extends TitledPane {
-    public BottleTitledPane(Alcohol alcohol, CriteriaCalculator calculator) {
+    public BottleTitledPane(Alcohol alcohol, CriteriaCalculator calculator, double accordionWidth, double accordionHeight) {
         super();
+        ScrollPane scroll = new ScrollPane();
+        scroll.setPrefHeight(accordionHeight);
+        scroll.setPrefWidth(accordionWidth);
+
         GridPane grid = new GridPane();
         grid.setVgap(4);
         grid.setPadding(new Insets(5, 5, 15, 5));
         initColumn(alcohol, calculator, grid);
-        this.setContent(grid);
+        scroll.setContent(grid);
+        this.setContent(scroll);
         this.setText(alcohol.getName());
     }
 
