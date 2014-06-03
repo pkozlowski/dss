@@ -11,10 +11,10 @@ public abstract class Criterion {
     public Criterion(double factor) {
         this.factor = factor;
     }
-
-    public abstract double calculate(Alcohol alcohol);
-
-    public double getFactor() {
-        return factor;
+    public final double calculate(Alcohol alcohol){
+        return calculatePartial(alcohol) * factor;
     }
+    public abstract double calculatePartial(Alcohol alcohol);
+
+    public abstract String getName();
 }

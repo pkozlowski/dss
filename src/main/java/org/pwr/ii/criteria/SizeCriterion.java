@@ -15,7 +15,12 @@ public class SizeCriterion extends Criterion {
     }
 
     @Override
-    public double calculate(Alcohol alcohol) {
-        return (1 - Math.abs(alcohol.getSize() - size) / maxSize) * getFactor();
+    public double calculatePartial(Alcohol alcohol) {
+        return 1 - Math.pow(Math.abs(alcohol.getSize() - size) / maxSize, 2.0);
+    }
+
+    @Override
+    public String getName() {
+        return "Size Criterion";
     }
 }

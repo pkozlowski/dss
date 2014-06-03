@@ -27,7 +27,12 @@ public class ColorCriterion extends Criterion {
     }
 
     @Override
-    public double calculate(Alcohol alcohol) {
-        return (1 - calculateDistancePow2(selectedColor, alcohol.getColor()) / maxDistance) * getFactor();
+    public double calculatePartial(Alcohol alcohol) {
+        return 1 - calculateDistancePow2(selectedColor, alcohol.getColor()) / maxDistance;
+    }
+
+    @Override
+    public String getName() {
+        return "Color Criterion";
     }
 }

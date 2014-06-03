@@ -21,7 +21,7 @@ public class VoltageCriterion extends Criterion {
         this(1.0, intervalBegin, intervalEnd, maxValue);
     }
 
-    public double calculateVoltageCriteria(Alcohol alcohol) {
+    public double calculatePartial(Alcohol alcohol) {
         double subtrahend = Math.pow((CriteriaUtil.countMiddle(intervalBegin, intervalEnd) - alcohol.getVoltage()) / maxValue, 2);
         if (CriteriaUtil.isInRange(alcohol.getVoltage(), intervalBegin, intervalEnd))
             return 1 - subtrahend * 0.7;
@@ -29,7 +29,8 @@ public class VoltageCriterion extends Criterion {
     }
 
     @Override
-    public double calculate(Alcohol alcohol) {
-        return calculateVoltageCriteria(alcohol) * getFactor();
+    public String getName() {
+        return "Voltage Criterion";
     }
+
 }

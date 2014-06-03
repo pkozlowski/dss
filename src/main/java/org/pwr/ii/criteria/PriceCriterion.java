@@ -27,7 +27,13 @@ public class PriceCriterion extends Criterion {
     }
 
     @Override
-    public double calculate(Alcohol alcohol) {
-        return calculatePriceFunction(alcohol) * getFactor();
+    public double calculatePartial(Alcohol alcohol) {
+        if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
+        return 1 - Math.pow(((CriteriaUtil.countMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
+    }
+
+    @Override
+    public String getName() {
+        return "Price Criterion";
     }
 }

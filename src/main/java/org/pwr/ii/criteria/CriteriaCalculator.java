@@ -34,8 +34,7 @@ public class CriteriaCalculator {
         });
     }
 
-    @VisibleForTesting
-    double calculate(Alcohol alcohol) {
+    public double calculate(Alcohol alcohol) {
         double result = 0.0;
         for (Criterion criterion : criteria) {
             double value = criterion.calculate(alcohol);
@@ -44,5 +43,7 @@ public class CriteriaCalculator {
         return result;
     }
 
-
+    public List<Criterion> getCriteria() {
+        return criteria;
+    }
 }
