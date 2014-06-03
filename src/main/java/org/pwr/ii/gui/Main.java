@@ -19,7 +19,7 @@ public class Main extends Application {
     }
 
     public void initializePrimaryStage(Stage primaryStage) {
-        primaryStage.setTitle("Decision support system");
+        primaryStage.setTitle("Decision support system - K&K Programming");
         primaryStage.setMinWidth(690);
         primaryStage.setMinHeight(450);
         primaryStage.setWidth(1000);
