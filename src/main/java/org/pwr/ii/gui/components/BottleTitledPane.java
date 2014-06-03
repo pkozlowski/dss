@@ -55,10 +55,8 @@ public class BottleTitledPane extends TitledPane {
         grid.add(new Label("Size: "), 0, 3);
         grid.add(new Label(String.format("%.2fml", alcohol.getSize())), 1, 3);
         grid.add(new Label("Image: "), 0, 5);
-        try {
-            grid.add(new ImageView(alcohol.getImage()), 1, 5);
-        } catch (IOException ignore) {
-        }
+        grid.add(new ImageView(alcohol.getImage()), 1, 5);
+
     }
 
     private Label getFancyLabel(String text) {

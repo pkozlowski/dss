@@ -40,7 +40,7 @@ public class AlcoholDatabase implements Alcohol {
     }
 
     @Override
-    public Image getImage() throws IOException {
+    public Image getImage(){
         String imageFileName = bottle.getTypeName().replaceAll(" ", "_");
         String path = "bottles\\" + imageFileName + ".png";
         try {
