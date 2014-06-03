@@ -3,7 +3,6 @@ package org.pwr.ii.criteria;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 /**
@@ -11,27 +10,17 @@ import java.io.IOException;
  * Date: 2014-05-28.
  */
 public interface Alcohol {
-    default public String getName() {
-        return "unknown";
-    }
+    public String getName();
 
-    default public double getPrice() {
-        return 0;
-    }
+    public double getPrice();
 
-    default public double getVoltage() {
-        return 0;
-    }
+    public double getVoltage();
 
-    default public Color getColor() {
-        return new Color(1, 1, 1, 0);
-    }
+    public Color getColor();
 
-    default public String getTypeName() {
-        return "unknown";
-    }
+    public String getTypeName();
 
-    public Image getImage() throws IOException;
+    public Image getImage();
 
     public double getSize();
 

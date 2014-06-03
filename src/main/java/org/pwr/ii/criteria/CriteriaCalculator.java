@@ -1,9 +1,7 @@
 package org.pwr.ii.criteria;
 
-import com.google.common.annotations.VisibleForTesting;
 import com.google.common.collect.Lists;
 
-import java.util.Comparator;
 import java.util.List;
 
 /**

@@ -51,7 +51,7 @@ public class DatabaseUtils {
         return getMaxValueForQuery(query, TypeColumns.TYPE_VOLTAGE);
     }
 
-    public double countMaxPrice() {
+    double countMaxPrice() {
         String query = String.format("SELECT MAX(%s)AS %s FROM %s", PriceColumns.PRICE_SALE, PriceColumns.PRICE_SALE, TableNames.PRICES);
         return getMaxValueForQuery(query, PriceColumns.PRICE_SALE);
     }
@@ -119,15 +119,13 @@ public class DatabaseUtils {
         Color color = new Color(Integer.parseInt(splitOfBottleColor[0]) / 255d, Integer.parseInt(splitOfBottleColor[1]) / 255d,
                 Integer.parseInt(splitOfBottleColor[2]) / 255d, Integer.parseInt(splitOfBottleColor[3]) / 255d);
 
-        BottleDatabase bottle = new BottleDatabase(type, color, bottle_name, bottle_size);
-        return bottle;
+        return new BottleDatabase(type, color, bottle_name, bottle_size);
     }
 
     private DatabaseType createType(ResultSet rs) throws SQLException {
         int typeVoltage = rs.getInt(TypeColumns.TYPE_VOLTAGE);
         String typeName = rs.getString(TypeColumns.TYPE_NAME);
-        DatabaseType type = new DatabaseType(typeVoltage, typeName);
-        return type;
+        return new DatabaseType(typeVoltage, typeName);
     }
 
 

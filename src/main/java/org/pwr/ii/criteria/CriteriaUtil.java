@@ -9,7 +9,7 @@ import java.math.RoundingMode;
  * Author: Piotr Kozłowski
  * Date: 2014-05-28.
  */
-public class CriteriaUtil {
+class CriteriaUtil {
     @VisibleForTesting
     static double round(double value, int places) {
         if (places < 0) throw new IllegalArgumentException();

@@ -28,12 +28,6 @@ public class BottleDatabase {
         return type;
     }
 
-    @Override
-    public String toString() {
-        return "BottleDatabase [type=" + type + ", bottleName=" + bottleName + ", bottleSize="
-                + bottleSize + "]";
-    }
-
     public double getVoltage() {
         return type.getVoltage();
     }

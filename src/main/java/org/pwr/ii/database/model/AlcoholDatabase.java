@@ -4,8 +4,6 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import org.pwr.ii.criteria.Alcohol;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public class AlcoholDatabase implements Alcohol {
@@ -23,13 +21,6 @@ public class AlcoholDatabase implements Alcohol {
         this.priceSale = priceSale;
         this.priceDateStart = priceDateStart;
         this.priceDateEnd = priceDateEnd;
-    }
-
-    @Override
-    public String toString() {
-        return "AlcoholDatabase [bottle=" + bottle + ", priceRetail=" + priceRetail + ", priceSale="
-                + priceSale + ", priceDateStart=" + priceDateStart + ", priceDateEnd="
-                + priceDateEnd + "]";
     }
 
     public String getName() {
@@ -52,13 +43,11 @@ public class AlcoholDatabase implements Alcohol {
     public Image getImage() throws IOException {
         String imageFileName = bottle.getTypeName().replaceAll(" ", "_");
         String path = "bottles\\" + imageFileName + ".png";
-
         try {
             return new Image(Thread.currentThread().getContextClassLoader()
                     .getResourceAsStream(path));
         } catch (NullPointerException e) {
             System.out.println("Could not find image: " + path);
-            e.printStackTrace();
         }
         return null;
     }

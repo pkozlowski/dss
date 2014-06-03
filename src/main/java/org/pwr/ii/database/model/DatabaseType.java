@@ -17,9 +17,4 @@ public class DatabaseType {
     public String getTypeName() {
         return typeName;
     }
-
-    @Override
-    public String toString() {
-        return "DatabaseType [typeVoltage=" + typeVoltage + ", typeName=" + typeName + "]";
-    }
 }

@@ -13,12 +13,9 @@ import org.pwr.ii.database.model.DatabaseType;
 
 import java.util.List;
 import java.util.function.Consumer;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static org.fest.assertions.api.Assertions.assertThat;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class CriteriaCalculatorTest {
 
@@ -88,17 +85,15 @@ public class CriteriaCalculatorTest {
 
 
     private Alcohol createAlcohol(double priceSale, double typeVoltage, String name) {
-        String typeName = name;
+        String typeName = "";
         DatabaseType databaseType = new DatabaseType(typeVoltage, typeName);
         Color color = new Color(1d, 1d, 1d, 1d);
-        String bottleName = name;
         int bottleSize = 600;
-        BottleDatabase bottleDatabase = new BottleDatabase(databaseType, color, bottleName, bottleSize);
+        BottleDatabase bottleDatabase = new BottleDatabase(databaseType, color, name, bottleSize);
         double priceRetail = 20;
         int priceDateStart = 123;
         int priceDateEnd = 321;
-        AlcoholDatabase alcoholDatabase = new AlcoholDatabase(bottleDatabase, priceRetail, priceSale, priceDateStart, priceDateEnd);
-        return alcoholDatabase;
+        return new AlcoholDatabase(bottleDatabase, priceRetail, priceSale, priceDateStart, priceDateEnd);
     }
 
 }

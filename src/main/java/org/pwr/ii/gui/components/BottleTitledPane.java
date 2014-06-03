@@ -30,7 +30,7 @@ public class BottleTitledPane extends TitledPane {
     }
 
     private void initColumn(Alcohol alcohol, CriteriaCalculator calculator, GridPane grid) {
-        setFirstCollumn(alcohol, grid);
+        setFirstColumn(alcohol, grid);
         setSecondColumn(alcohol, calculator, grid);
     }
 
@@ -45,7 +45,7 @@ public class BottleTitledPane extends TitledPane {
         grid.add(getFancyLabel(String.format("%.5f", calculator.calculate(alcohol))), 3, startRowNumber);
     }
 
-    private void setFirstCollumn(Alcohol alcohol, GridPane grid) {
+    private void setFirstColumn(Alcohol alcohol, GridPane grid) {
         grid.add(new Label("Name: "), 0, 0);
         grid.add(new Label(alcohol.getName()), 1, 0);
         grid.add(new Label("Type: "), 0, 1);
