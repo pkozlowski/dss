@@ -20,15 +20,15 @@ import java.io.IOException;
  * Date: 2014-05-31.
  */
 public class BottleTitledPane extends TitledPane {
-    public BottleTitledPane(Alcohol alcohol, CriteriaCalculator calculator, double accordionWidth, double accordionHeight) {
+    public BottleTitledPane(Alcohol alcohol, CriteriaCalculator calculator, double accordionHeight) {
         super();
         ScrollPane scroll = new ScrollPane();
         scroll.setPrefHeight(accordionHeight);
-        scroll.setPrefWidth(accordionWidth);
 
         GridPane grid = new GridPane();
         grid.setVgap(4);
         grid.setPadding(new Insets(5, 5, 15, 5));
+
         initColumn(alcohol, calculator, grid);
         scroll.setContent(grid);
         this.setContent(scroll);
