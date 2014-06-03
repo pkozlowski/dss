@@ -6,6 +6,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.effect.Reflection;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -26,8 +27,11 @@ public class BottleTitledPane extends TitledPane {
         scroll.setPrefHeight(accordionHeight);
 
         GridPane grid = new GridPane();
+        grid.setHgap(4);
         grid.setVgap(4);
-        grid.setPadding(new Insets(5, 5, 15, 5));
+        ColumnConstraints firstColumnConstraint = new ColumnConstraints();
+        firstColumnConstraint.setMinWidth(10);
+        grid.getColumnConstraints().add(firstColumnConstraint);
 
         initColumn(alcohol, calculator, grid);
         scroll.setContent(grid);
@@ -44,24 +48,24 @@ public class BottleTitledPane extends TitledPane {
 
         int startRowNumber = 0;
         for (Criterion criterion : calculator.getCriteria()) {
-            grid.add(new Label(criterion.getName()), 2, startRowNumber);
-            grid.add(new Label(String.format("%.5f", criterion.calculatePartial(alcohol))), 3, startRowNumber++);
+            grid.add(new Label(criterion.getName()), 3, startRowNumber);
+            grid.add(new Label(String.format("%.5f", criterion.calculatePartial(alcohol))), 4, startRowNumber++);
         }
-        grid.add(getFancyLabel("General: "), 2, startRowNumber);
-        grid.add(getFancyLabel(String.format("%.5f", calculator.calculate(alcohol))), 3, startRowNumber);
+        grid.add(getFancyLabel("General: "), 3, startRowNumber);
+        grid.add(getFancyLabel(String.format("%.5f", calculator.calculate(alcohol))), 4, startRowNumber);
     }
 
     private void setFirstColumn(Alcohol alcohol, GridPane grid) {
-        grid.add(new Label("Name: "), 0, 0);
-        grid.add(new Label(alcohol.getName()), 1, 0);
-        grid.add(new Label("Type: "), 0, 1);
-        grid.add(new Label(alcohol.getTypeName()), 1, 1);
-        grid.add(new Label("Price: "), 0, 2);
-        grid.add(new Label(String.format("%.2f$", alcohol.getPrice())), 1, 2);
-        grid.add(new Label("Size: "), 0, 3);
-        grid.add(new Label(String.format("%.2fml", alcohol.getSize())), 1, 3);
-        grid.add(new Label("Image: "), 0, 5);
-        grid.add(new ImageView(alcohol.getImage()), 1, 5);
+        grid.add(new Label("Name: "), 1, 0);
+        grid.add(new Label(alcohol.getName()), 2, 0);
+        grid.add(new Label("Type: "), 1, 1);
+        grid.add(new Label(alcohol.getTypeName()), 2, 1);
+        grid.add(new Label("Price: "), 1, 2);
+        grid.add(new Label(String.format("%.2f$", alcohol.getPrice())), 2, 2);
+        grid.add(new Label("Size: "), 1, 3);
+        grid.add(new Label(String.format("%.2fml", alcohol.getSize())), 2, 3);
+        grid.add(new Label("Image: "), 1, 5);
+        grid.add(new ImageView(alcohol.getImage()), 2, 5);
 
     }
 

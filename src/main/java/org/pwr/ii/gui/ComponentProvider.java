@@ -2,6 +2,7 @@ package org.pwr.ii.gui;
 
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.BorderPane;
 
 /**
  * Created by Vortim on 2014-05-29.
@@ -42,6 +43,6 @@ public class ComponentProvider {
         return (Accordion) scene.lookup("#accordionList");
     }
     public static TextField getSizeField(MainScene scene) {  return (TextField) scene.lookup("#sizeField");  }
-    public static Slider getSizeSlider(MainScene scene) {return (Slider) scene.lookup("#sizeSlider");    }
+    public static Slider getSizeSlider(MainScene scene) {return (Slider) scene.lookup("#sizeSlider"); }
 }
 

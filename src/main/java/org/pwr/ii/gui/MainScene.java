@@ -5,6 +5,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.BorderPane;
 import org.pwr.ii.gui.components.NumericEventFilter;
 
 /**
@@ -25,14 +26,13 @@ public class MainScene extends Scene {
     private Button findButton;
     private Accordion accordion;
 
-    public MainScene(@NamedArg("root") Parent root, @NamedArg("width") double width, @NamedArg("height") double height) {
-        super(root, width, height);
+    public MainScene(@NamedArg("root") Parent root) {
+        super(root);
         initComponents();
     }
 
     private void initComponents() {
         NumericEventFilter eventFilter = new NumericEventFilter();
-
         initPriceComponents(eventFilter);
         initVoltageComponents(eventFilter);
         initSizeComponents(eventFilter);

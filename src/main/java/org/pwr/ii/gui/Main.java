@@ -11,13 +11,19 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("main.fxml"));
-        primaryStage.setTitle("Decision support system");
-        primaryStage.setMinWidth(650);
-        primaryStage.setMinHeight(450);
-        MainScene mainScene = new MainScene(root, 1000, 700);
+        initializePrimaryStage(primaryStage);
+        MainScene mainScene = new MainScene(root);
         primaryStage.setScene(mainScene);
         new Controller(mainScene);
         primaryStage.show();
+    }
+
+    public void initializePrimaryStage(Stage primaryStage) {
+        primaryStage.setTitle("Decision support system");
+        primaryStage.setMinWidth(690);
+        primaryStage.setMinHeight(450);
+        primaryStage.setWidth(1000);
+        primaryStage.setHeight(700);
     }
 
     public static void main(String[] args) {
