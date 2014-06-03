@@ -20,12 +20,6 @@ public class PriceCriterion extends Criterion {
         this(1.0, intervalBegin, intervalEnd, maxValue);
     }
 
-    public double calculatePriceFunction(Alcohol alcohol) {
-        if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
-        double result = 1 - Math.pow(((CriteriaUtil.countMiddle(intervalBegin, intervalEnd) - alcohol.getPrice()) / maxValue), 2);
-        return result;
-    }
-
     @Override
     public double calculatePartial(Alcohol alcohol) {
         if (CriteriaUtil.isInRange(alcohol.getPrice(), intervalBegin, intervalEnd)) return 1;
