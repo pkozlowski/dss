@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import org.pwr.ii.criteria.*;
 import org.pwr.ii.database.DatabaseUtils;
 import org.pwr.ii.gui.components.BottleTitledPane;
+import org.pwr.ii.gui.components.MaxValueValidatorListener;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -25,6 +26,14 @@ public class Controller implements EventHandler<ActionEvent> {
         this.scene = scene;
         scene.getFindButton().setOnAction(this);
         loadDatabase();
+        initValidators();
+    }
+
+    private void initValidators() {
+        TextField priceMaximumField = scene.getPriceMaximumField();
+        priceMaximumField.focusedProperty().addListener(new MaxValueValidatorListener(database.getMaxPrice(), priceMaximumField));
+        TextField voltageMaximumField = scene.getVoltageMaximumField();
+        voltageMaximumField.focusedProperty().addListener(new MaxValueValidatorListener(database.getMaxVoltage(), voltageMaximumField));
     }
 
     private void loadDatabase() {
