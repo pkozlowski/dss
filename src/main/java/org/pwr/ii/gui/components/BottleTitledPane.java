@@ -1,6 +1,5 @@
 package org.pwr.ii.gui.components;
 
-import javafx.geometry.Insets;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TitledPane;
@@ -13,8 +12,6 @@ import javafx.scene.text.FontWeight;
 import org.pwr.ii.criteria.Alcohol;
 import org.pwr.ii.criteria.CriteriaCalculator;
 import org.pwr.ii.criteria.Criterion;
-
-import java.io.IOException;
 
 /**
  * Author: Piotr Kozłowski
@@ -64,6 +61,8 @@ public class BottleTitledPane extends TitledPane {
         grid.add(new Label(String.format("%.2f$", alcohol.getPrice())), 2, 2);
         grid.add(new Label("Size: "), 1, 3);
         grid.add(new Label(String.format("%.2fml", alcohol.getSize())), 2, 3);
+        grid.add(new Label("Voltage: "), 1, 4);
+        grid.add(new Label(String.format("%.2f%%", alcohol.getVoltage())), 2, 4);
         grid.add(new Label("Image: "), 1, 5);
         grid.add(new ImageView(alcohol.getImage()), 2, 5);
 
