@@ -38,9 +38,9 @@ public class Controller implements EventHandler<ActionEvent> {
     }
 
     private void initValidators() {
-        TextField priceMaximumField = scene.getPriceMaximumField();
+        TextField priceMaximumField = getPriceMaximumField(scene);
         priceMaximumField.focusedProperty().addListener(new MaxValueValidatorListener(database.getMaxPrice(), priceMaximumField));
-        TextField voltageMaximumField = scene.getVoltageMaximumField();
+        TextField voltageMaximumField = getVoltageMaximumField(scene);
         voltageMaximumField.focusedProperty().addListener(new MaxValueValidatorListener(database.getMaxVoltage(), voltageMaximumField));
     }
 

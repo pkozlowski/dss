@@ -34,7 +34,7 @@ public class GuiIntegrationTest extends GuiTest {
         move(ComponentProvider.ACCORDION_LIST);
 
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
