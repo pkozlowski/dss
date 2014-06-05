@@ -32,7 +32,7 @@ public class DatabaseUtilsTest {
 
         //then
         List<Alcohol> alcoholData = util.getDatabaseContent();
-        Assertions.assertThat(alcoholData.size()).isEqualTo(1);
+        Assertions.assertThat(alcoholData.size()).isEqualTo(5);
     }
 
     @Test
@@ -46,7 +46,7 @@ public class DatabaseUtilsTest {
         double maxVoltage = utils.getMaxVoltage();
 
         //then
-        Assertions.assertThat(maxPrice).isEqualTo(24.5);
+        Assertions.assertThat(maxPrice).isEqualTo(106.78);
         Assertions.assertThat(maxVoltage).isEqualTo(45);
     }
 
@@ -64,9 +64,9 @@ public class DatabaseUtilsTest {
         Assertions.assertThat(alcohol.getColor()).isEqualTo(new Color(1d,1d,1d,0d));
         Assertions.assertThat(alcohol.getVoltage()).isEqualTo(45);
         Assertions.assertThat(alcohol.getImage()).isInstanceOf(Image.class);
-        Assertions.assertThat(alcohol.getName()).isEqualTo("Test bottle name");
+        Assertions.assertThat(alcohol.getName()).isEqualTo("Test bottle name 1");
         Assertions.assertThat(alcohol.getPrice()).isEqualTo(24.5);
         Assertions.assertThat(alcohol.getSize()).isEqualTo(500);
-        Assertions.assertThat(alcohol.getTypeName()).isEqualTo("Canadian Whisky");
+        Assertions.assertThat(alcohol.getTypeName()).isEqualTo("Test type name 1");
     }
 }
