@@ -14,6 +14,10 @@ public class SizeCriterion extends Criterion {
         this.maxSize = maxSize;
     }
 
+    public SizeCriterion(double size, double maxSize) {
+        this(1.0, size, maxSize);
+    }
+
     @Override
     public double calculatePartial(Alcohol alcohol) {
         return 1 - Math.pow(Math.abs(alcohol.getSize() - size) / maxSize, 2.0);
