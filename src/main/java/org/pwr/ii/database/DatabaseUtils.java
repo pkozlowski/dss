@@ -70,9 +70,7 @@ public class DatabaseUtils {
             while (rs.next()) {
                 result = rs.getDouble(valueName);
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        } catch (SQLException ignore) {}
         return result;
     }
 
@@ -95,10 +93,7 @@ public class DatabaseUtils {
                 AlcoholDatabase price = createPrice(rs, bottle);
                 result.add(price);
             }
-        } catch (SQLException e) {
-            System.err.println("Problem with opening connection");
-            e.printStackTrace();
-        }
+        } catch (SQLException ignore) {}
         return result;
     }
 

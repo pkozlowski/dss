@@ -7,7 +7,6 @@ import javafx.scene.input.KeyEvent;
  * Author: Piotr Kozłowski
  * Date: 2014-05-31.
  */
-
 public class NumericEventFilter implements EventHandler<KeyEvent> {
 
     @Override

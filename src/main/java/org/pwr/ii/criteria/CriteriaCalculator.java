@@ -17,10 +17,6 @@ public class CriteriaCalculator {
         this.alcohols = alcohols;
     }
 
-    public CriteriaCalculator() {
-        this(Lists.newArrayList());
-    }
-
     public void addCriterion(Criterion criterion) {
         criteria.add(criterion);
     }
